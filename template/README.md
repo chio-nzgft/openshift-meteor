@@ -1,1 +1,1 @@
-To test go build hello_world.go
+For test go build Hello_world.go
