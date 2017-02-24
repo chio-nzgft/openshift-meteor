@@ -12,7 +12,7 @@ To install to OpenShift from the CLI (you'll need version 1.9 or later of rhc), 
 
 ]\> cat go/logs/go.log
 
-Fri Feb 24 2017 02:18:15 GMT-0500 (EST): Starting application 'mygorevel' from bin/goexample...
+Fri Feb 24 2017 02:18:15 GMT-0500 (EST): Starting application 'mygorevel' from bin/revel...
 
 ~
 
