@@ -108,3 +108,9 @@ rm -rf $build/.openshift/g # this removes the constructed $GOPATH
 echo $GOROOT > $OPENSHIFT_GO_DIR/env/GOROOT
 echo $GOPATH > $OPENSHIFT_GO_DIR/env/GOPATH
 echo "$HOME/bin:$GOROOT/bin" > $OPENSHIFT_GO_DIR/env/OPENSHIFT_GO_PATH_ELEMENT
+
+export GOPATH=$OPENSHIFT_REPO_DIR
+cd $GOPATH
+go get github.com/revel/revel
+go get github.com/revel/cmd/revel
+revel new myapp
