@@ -41,7 +41,8 @@ function start() {
         if [ -f "bin/$package" ]; then
             echo "`date +"$FMT"`: Starting application '$OPENSHIFT_APP_NAME' from bin/$package..."
 
-            nohup "bin/$package" >> $logf 2>&1 &
+            export GOPATH=$OPENSHIFT_REPO_DIR
+	    bin/revel run myapp >> $logf 2>&1 &
 
             ret=$?
             npid=$!
