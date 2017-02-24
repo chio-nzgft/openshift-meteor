@@ -115,3 +115,7 @@ go get github.com/revel/revel
 go get github.com/revel/cmd/revel
 export PATH="$PATH:$GOPATH/bin"
 revel new myapp
+sed -i 's/http.addr = //' src/myapp/conf/app.conf
+sed -i 's/http.port = 9000//' src/myapp/conf/app.conf
+echo 'http.addr =' $OPENSHIFT_GO_IP >> src/myapp/conf/app.conf
+echo 'http.port =' $OPENSHIFT_GO_PORT >> src/myapp/conf/app.conf
