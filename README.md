@@ -7,5 +7,5 @@ To install to OpenShift from the CLI (you'll need version 1.9 or later of rhc), 
 
     rhc create-app mygorevel https://cartreflect-claytondev.rhcloud.com/reflect?github=chio-nzgft/openshift-go-revel
 
-![alt tag](https://pic.pimg.tw/echochio/1481189806-1192089371_n.png)
+![alt tag](https://github.com/chio-nzgft/openshift-go-revel/raw/master/show.png)
 
