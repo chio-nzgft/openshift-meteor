@@ -1,5 +1,5 @@
 OpenShift Go revel Cartridge
-======================
+=============================
 
 Append from : https://github.com/smarterclayton/openshift-go-cart
 
