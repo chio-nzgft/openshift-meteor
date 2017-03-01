@@ -113,5 +113,10 @@ export GOPATH=$OPENSHIFT_REPO_DIR
 cd $GOPATH
 go get github.com/revel/revel
 go get github.com/revel/cmd/revel
-go get github.com/leanote/leanote/app
+export PATH="$PATH:$GOPATH/bin"
+revel new myapp
+
+sed -i 's/http.addr =/http.addr = '$(echo $OPENSHIFT_GO_IP)'/g' src/myapp/conf/app.conf
+sed -i 's/http.port = 9000/http.port = '$(echo $OPENSHIFT_GO_PORT)'/g' src/myapp/conf/app.conf
+sed -i 's/It works!/openshift go revel - It works!/g' src/myapp/app/views/App/Index.html
 
