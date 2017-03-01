@@ -40,7 +40,11 @@ function start() {
 	    if [ -f "src/github.com/leanote/leanote/conf/app.conf" ] ;then
 		  echo "`date +"$FMT"`: Have leanote application '$OPENSHIFT_APP_NAME' ..."
 		else
+		  rm -rf *
+		  go get github.com/revel/revel
+                  go get github.com/revel/cmd/revel
 		  go get github.com/leanote/leanote/app
+		  export PATH="$PATH:$GOPATH/bin"
 		  mongorestore  --host $OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT --username $OPENSHIFT_MONGODB_DB_USERNAME --password $OPENSHIFT_MONGODB_DB_PASSWORD --dir src/github.com/leanote/leanote/mongodb_backup/leanote_install_data
                   sed -i 's/http.addr=/http.addr='$(echo $OPENSHIFT_GO_IP)'/g' src/github.com/leanote/leanote/conf/app.conf
                   sed -i 's/http.port=9000/http.port='$(echo $OPENSHIFT_GO_PORT)'/g' src/github.com/leanote/leanote/conf/app.conf
