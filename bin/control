@@ -42,8 +42,8 @@ function start() {
             echo "`date +"$FMT"`: Starting application '$OPENSHIFT_APP_NAME' from bin/$package..."
 
             export GOPATH=$OPENSHIFT_REPO_DIR
-	    bin/revel run myapp >> $logf 2>&1 &
-
+	    bin/revel run github.com/leanote/leanote >> $logf 2>&1 &
+	    
             ret=$?
             npid=$!
             if [ $ret -eq 0 ]; then
