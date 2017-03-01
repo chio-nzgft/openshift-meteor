@@ -25,7 +25,6 @@ function status() {
     fi
 }
 
-
 function start() {
     logf="${OPENSHIFT_GO_LOG_DIR}/go.log"
 
@@ -37,6 +36,19 @@ function start() {
     pushd "$OPENSHIFT_REPO_DIR" > /dev/null
     {
 	package="revel"
+	export GOPATH=$OPENSHIFT_REPO_DIR
+	    if [ -f "src/github.com/leanote/leanote/conf/app.conf" ] ;then
+		  echo "`date +"$FMT"`: Have leanote application '$OPENSHIFT_APP_NAME' ..."
+		else
+		  go get github.com/leanote/leanote/app
+		  mongorestore  --host $OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT --username $OPENSHIFT_MONGODB_DB_USERNAME --password $OPENSHIFT_MONGODB_DB_PASSWORD --dir src/github.com/leanote/leanote/mongodb_backup/leanote_install_data
+                  sed -i 's/http.addr=/http.addr='$(echo $OPENSHIFT_GO_IP)'/g' src/github.com/leanote/leanote/conf/app.conf
+                  sed -i 's/http.port=9000/http.port='$(echo $OPENSHIFT_GO_PORT)'/g' src/github.com/leanote/leanote/conf/app.conf
+                  sed -i 's/db.username=/db.username='$(echo $OPENSHIFT_MONGODB_DB_USERNAME)'/g' src/github.com/leanote/leanote/conf/app.conf
+                  sed -i 's/db.password=/db.password='$(echo $OPENSHIFT_MONGODB_DB_PASSWORD)'/g' src/github.com/leanote/leanote/conf/app.conf
+                  sed -i 's/db.host=127.0.0.1/db.host='$(echo $OPENSHIFT_MONGODB_DB_HOST)'/g' src/github.com/leanote/leanote/conf/app.conf
+                  sed -i 's/db.port=27017/db.port='$(echo $OPENSHIFT_MONGODB_DB_PORT)'/g' src/github.com/leanote/leanote/conf/app.conf
+		fi
 
         if [ -f "bin/$package" ]; then
             echo "`date +"$FMT"`: Starting application '$OPENSHIFT_APP_NAME' from bin/$package..."
@@ -57,6 +69,7 @@ function start() {
         fi
     } >> $logf
 }
+
 
 function stop() {
     if [ -f $OPENSHIFT_GO_DIR/pid/go.pid ]; then
