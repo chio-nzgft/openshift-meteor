@@ -1,7 +1,7 @@
 OpenShift Go revel Cartridge
 =============================
 
-Append from : https://github.com/smarterclayton/openshift-go-cart
+Append from : https://github.com/chio-nzgft/openshift-go-revel
 
 To install to OpenShift from the CLI (you'll need version 1.9 or later of rhc), run:
 
