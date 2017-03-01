@@ -4,9 +4,9 @@ OpenShift Go revel Cartridge
 PS : Use mLab MongoDB
 =============================
 
-Create DB : mongorestore -h ds145389.mlab.com:45389 -d leanote -u <user> -p <password> <input db directory>
+Create DB : mongorestore -h ds145389.mlab.com:45389 -d leanote -u admin -p leanote
 
-    rhc create-app leanote https://cartreflect-claytondev.rhcloud.com/reflect?github=chio-nzgft/openshift-go-revel-leanote-mlab-db
+     mongorestore -h ds145389.mlab.com:45389 -d leanote -u admin -p leanote --dir src/github.com/leanote/leanote/mongodb_backup/leanote_install_data
 
 Append from : https://github.com/chio-nzgft/openshift-go-revel
 
