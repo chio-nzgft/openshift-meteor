@@ -14,6 +14,9 @@ To install to OpenShift from the CLI (you'll need version 1.9 or later of rhc), 
 
     rhc create-app leanote https://cartreflect-claytondev.rhcloud.com/reflect?github=chio-nzgft/openshift-go-revel-leanote-mlab-db
 
+![alt tag](https://github.com/chio-nzgft/openshift-go-revel-leanote-mlab-db/raw/master/show.png)
+
+
 ]\> cat go/logs/go.log
 
 TRACE 2017/02/28 23:10:27 harness.go:127: Rebuild
