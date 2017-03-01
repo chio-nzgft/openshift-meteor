@@ -1,8 +1,15 @@
 OpenShift Go revel Cartridge
 =============================
 
-PS : Use mLab MongoDB
+Use mLab MongoDB
 =============================
+
+please clone git ... then change db host in ....openshift-go-revel-leanote-mlab-db/bin/compile file
+
+    sed -i 's/db.username=/db.username=admin/g' src/github.com/leanote/leanote/conf/app.conf
+    sed -i 's/db.password=/db.password=leanote/g' src/github.com/leanote/leanote/conf/app.conf
+    sed -i 's/db.host=127.0.0.1/db.host=ds145389.mlab.com/g' src/github.com/leanote/leanote/conf/app.conf
+    sed -i 's/db.port=27017/db.port=45389/g' src/github.com/leanote/leanote/conf/app.conf
 
 Create DB : mongorestore -h ds145389.mlab.com:45389 -d leanote -u admin -p leanote
 
