@@ -121,5 +121,5 @@ sed -i 's/http.addr=/http.addr='$(echo $OPENSHIFT_GO_IP)'/g' src/github.com/lean
 sed -i 's/http.port=9000/http.port='$(echo $OPENSHIFT_GO_PORT)'/g' src/github.com/leanote/leanote/conf/app.conf
 sed -i 's/db.username=/db.username='$(echo $OPENSHIFT_MONGODB_DB_USERNAME)'/g' src/github.com/leanote/leanote/conf/app.conf
 sed -i 's/db.password=/db.password='$(echo $OPENSHIFT_MONGODB_DB_PASSWORD)'/g' src/github.com/leanote/leanote/conf/app.conf
-sed -i 's/db.host='$(echo $OPENSHIFT_GO_PORT)'/db.host='$(echo $OPENSHIFT_MONGODB_DB_HOST)'/g' src/github.com/leanote/leanote/conf/app.conf
+sed -i 's/db.host=127.0.0.1/db.host='$(echo $OPENSHIFT_MONGODB_DB_HOST)'/g' src/github.com/leanote/leanote/conf/app.conf
 sed -i 's/db.port=27017/db.port='$(echo $OPENSHIFT_MONGODB_DB_PORT)'/g' src/github.com/leanote/leanote/conf/app.conf
