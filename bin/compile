@@ -115,7 +115,7 @@ go get github.com/revel/revel
 go get github.com/revel/cmd/revel
 export PATH="$PATH:$GOPATH/bin"
 go get github.com/leanote/leanote/app
-mongorestore -h ds145389.mlab.com:45389 -d leanote -u admin -p leanote --dir src/github.com/leanote/leanote/mongodb_backup/leanote_install_data
+
 sed -i 's/http.addr=/http.addr='$(echo $OPENSHIFT_GO_IP)'/g' src/github.com/leanote/leanote/conf/app.conf
 sed -i 's/http.port=9000/http.port='$(echo $OPENSHIFT_GO_PORT)'/g' src/github.com/leanote/leanote/conf/app.conf
 
