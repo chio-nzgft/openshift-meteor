@@ -115,7 +115,7 @@ go get github.com/revel/revel
 go get github.com/revel/cmd/revel
 export PATH="$PATH:$GOPATH/bin"
 go get github.com/leanote/leanote/app
-mongorestore mongodump --host $OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT --dir src/github.com/leanote/leanote/mongodb_backup/leanote_install_data
+mongorestore --host $OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT --dir src/github.com/leanote/leanote/mongodb_backup/leanote_install_data
 revel run github.com/leanote/leanote
 sed -i 's/http.addr =/http.addr = '$(echo $OPENSHIFT_GO_IP)'/g' src/github.com/leanote/leanote/conf/app.conf
 sed -i 's/http.port = 9000/http.port = '$(echo $OPENSHIFT_GO_PORT)'/g' src/github.com/leanote/leanote/conf/app.conf
