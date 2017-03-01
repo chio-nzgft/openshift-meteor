@@ -8,7 +8,7 @@ Append from : https://github.com/chio-nzgft/openshift-go-revel
 
 To install to OpenShift from the CLI (you'll need version 1.9 or later of rhc), run:
 
-    rhc create-app leanote mongodb-2.4 https://cartreflect-claytondev.rhcloud.com/reflect?github=chio-nzgft/openshift-go-revel-leanote-mlab-db
+    rhc create-app leanote https://cartreflect-claytondev.rhcloud.com/reflect?github=chio-nzgft/openshift-go-revel-leanote-mlab-db
 
 ]\> cat go/logs/go.log
 
