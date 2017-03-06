@@ -6,8 +6,4 @@
 
 set -eo pipefail
 
-cd $OPENSHIFT_REPO_DIR
-export HOME=$OPENSHIFT_REPO_DIR
-mkdir meteor
-cd meteor
-curl https://install.meteor.com/ | sh -x
+
