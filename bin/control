@@ -78,6 +78,7 @@ function restart() {
 
 function build() {
     cd $OPENSHIFT_REPO_DIR
+    curl https://install.meteor.com | sh
     meteor create hello
 }
 
