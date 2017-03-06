@@ -32,27 +32,19 @@ function start() {
         echo "`date +"$FMT"`: Application '$OPENSHIFT_APP_NAME' is already running; skipping start()"
         return 0
     fi
-
-    pushd "$OPENSHIFT_REPO_DIR" > /dev/null
-    {
-	package="revel"
-       if [ -f "bin/$package" ]; then
-            echo "`date +"$FMT"`: Starting application '$OPENSHIFT_APP_NAME' from bin/$package..."
-            cd $$OPENSHIFT_REPO_DIR
-            meteor run  >> $logf 2>&1 &
-	    ret=$?
-            npid=$!
+    
+    echo "`date +"$FMT"`: Starting application '$OPENSHIFT_APP_NAME' from bin/$package..."
+    cd $OPENSHIFT_REPO_DIR\hello
+    meteor >> $logf 2>&1 &
+    ret=$?
+    npid=$!
             if [ $ret -eq 0 ]; then
                 echo "$npid" > "$OPENSHIFT_REPO_DIR/pid/meteor.pid"
             else
                 echo "Application '$OPENSHIFT_APP_NAME' failed to start - $ret" 1>&2
                 exit $ret
             fi
-        else
-            echo "WARN: Could not find the compiled application bin/$package, will not start"
-        fi
-    } >> $logf
-}
+ }
 
 
 function stop() {
@@ -87,7 +79,8 @@ function restart() {
 }
 
 function build() {
-    echo
+    cd $OPENSHIFT_REPO_DIR
+    meteor create hello
 }
 
 function post-deploy() {
