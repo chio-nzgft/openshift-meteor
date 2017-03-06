@@ -87,7 +87,7 @@ function restart() {
 }
 
 function build() {
-    
+    echo
 }
 
 function post-deploy() {
