@@ -6,7 +6,6 @@ case "$1" in
 esac
 
 # Parse arguments
-source "${OPENSHIFT_REPO_DIR}/lib/util"
 parse_args $@
 
 # Don't set -u until after the above arg parsing is complete
