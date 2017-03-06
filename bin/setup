@@ -6,14 +6,14 @@ case "$1" in
 esac
 
 # Parse arguments
-source "${OPENSHIFT_GO_DIR}/lib/util"
+source "${OPENSHIFT_REPO_DIR}/lib/util"
 parse_args $@
 
 # Don't set -u until after the above arg parsing is complete
 set -u
 
-echo "$version" > $OPENSHIFT_GO_DIR/env/GOVERSION
-echo ${OPENSHIFT_GO_DIR}/logs > ${OPENSHIFT_GO_DIR}/env/OPENSHIFT_GO_LOG_DIR
+echo "$version" > $OPENSHIFT_REPO_DIR/env/GOVERSION
+echo ${OPENSHIFT_REPO_DIR}/logs > ${OPENSHIFT_REPO_DIR}/env/OPENSHIFT_GO_LOG_DIR
 
 echo $OPENSHIFT_GO_IP > $OPENSHIFT_GO_DIR/env/HOST
 echo $OPENSHIFT_GO_PORT > $OPENSHIFT_GO_DIR/env/PORT
