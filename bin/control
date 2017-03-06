@@ -87,7 +87,7 @@ function restart() {
 }
 
 function build() {
-    ${OPENSHIFT_REPO_DIR}/bin/compile ${OPENSHIFT_REPO_DIR} ${OPENSHIFT_REPO_DIR}/cache
+    
 }
 
 function post-deploy() {
