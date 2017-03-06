@@ -6,6 +6,6 @@
 
 set -eo pipefail
 
-source "${OPENSHIFT_GO_DIR}/lib/util"
+source "${OPENSHIFT_REPO_DIR}/lib/util"
 cd $OPENSHIFT_REPO_DIR
 curl https://install.meteor.com/ | sh
