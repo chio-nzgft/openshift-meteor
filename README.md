@@ -1,44 +1,130 @@
 OpenShift Meteor Cartridge ..... NOT Work !!!
 =============================
 
-NOT Work !!!
+Creating application 'meteor' ...
 
-Use mLab MongoDB
-=============================
+The initial build for the application failed: Shell command '/sbin/runuser -s /bin/sh 58bd101089f5cf249a000095 -c "exec /usr/bin/runcon 'unconfined_u:system_r:openshift_t:s0:c2,c280' /bin/sh -c \"gear
 
-please clone git ... then change db host in ....openshift-go-revel-leanote-mlab-db/bin/compile file
+postreceive --init >> /tmp/initial-build.log 2>&1\""' returned an error. rc=255
 
-    sed -i 's/db.username=/db.username=admin/g' src/github.com/leanote/leanote/conf/app.conf
-    sed -i 's/db.password=/db.password=leanote/g' src/github.com/leanote/leanote/conf/app.conf
-    sed -i 's/db.host=127.0.0.1/db.host=ds145389.mlab.com/g' src/github.com/leanote/leanote/conf/app.conf
-    sed -i 's/db.port=27017/db.port=45389/g' src/github.com/leanote/leanote/conf/app.conf
+.Last 10 kB of build output:
 
-Create DB : mongorestore -h ds145389.mlab.com:45389 -d leanote -u admin -p leanote
+nderscore/objects/isArray.js: Cannot open: No such file or directory
 
-     mongorestore -h ds145389.mlab.com:45389 -d leanote -u admin -p leanote --dir src/github.com/leanote/leanote/mongodb_backup/leanote_install_data
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-
+node/underscore/objects/isBoolean.js: Cannot open: No such file or directory
 
-Append from : https://github.com/chio-nzgft/openshift-go-revel
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-
+node/underscore/objects/isDate.js: Cannot open: No such file or directory
 
-To install to OpenShift from the CLI (you'll need version 1.9 or later of rhc), run:
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-
+node/underscore/objects/isElement.js: Cannot open: No such file or directory
 
-    rhc create-app leanote https://cartreflect-claytondev.rhcloud.com/reflect?github=chio-nzgft/openshift-go-revel-leanote-mlab-db
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/objects/isEmpty.js: Cannot open: No such file or directory
 
-![alt tag](https://github.com/chio-nzgft/openshift-go-revel-leanote-mlab-db/raw/master/show-note.png)
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/objects/isEqual.js: Cannot open: No such file or directory
 
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/objects/isFinite.js: Cannot open: No such file or directory
 
-[root@test gocode]# rhc app start leanote
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/objects/isFunction.js: Cannot open: No such file or directory
 
-RESULT:
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/objects/isNaN.js: Cannot open: No such file or directory
 
-leanote started
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/objects/isNull.js: Cannot open: No such file or directory
 
-[root@test gocode]# rhc app-show --gears quota leanote
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/objects/isNumber.js: Cannot open: No such file or directory
 
-Gear                     Cartridges                Used Limit
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/objects/isObject.js: Cannot open: No such file or directory
 
------------------------- ----------------------- ------ -----
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/objects/isRegExp.js: Cannot open: No such file or directory
 
-58b669d60c1e22222222222 smarterclayton-go-1.5.2 0.8 GB  1 GB
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/objects/isString.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/objects/isUndefined.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/objects/keys.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/objects/omit.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/objects/pairs.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/objects/pick.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/objects/values.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/objects.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/support.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/utilities: Cannot mkdir: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/utilities/escape.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/utilities/identity.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/utilities/mixin.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/utilities/noConflict.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/utilities/noop.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/utilities/now.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/utilities/property.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/utilities/random.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/utilities/result.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/utilities/template.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/utilities/templateSettings.js: Cannot open: No such file or
+
+directory
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/utilities/times.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/utilities/unescape.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/utilities/uniqueId.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/node_modules/lodash-node/underscore/utilities.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/npm/node_modules/xmlbuilder/package.json: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/os: Cannot mkdir: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/os/xmlbuilder.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/os-legacy: Cannot mkdir: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/os-legacy/packages: Cannot mkdir: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/os-legacy/packages/xmlbuilder.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/os-legacy.json: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/os.json: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/package.js: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/unipackage.json: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/web.browser: Cannot mkdir: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/web.browser-legacy.json: Cannot open: No such file or 
+directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/web.browser.json: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/web.cordova: Cannot mkdir: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/web.cordova-legacy.json: Cannot open: No such file or 
+directory
+
+tar: .meteor/packages/xmlbuilder/.2.5.15.hv7vs1++os+web.browser+web.cordova/web.cordova.json: Cannot open: No such file or directory
+
+tar: .meteor/packages/xmlbuilder/2.5.15: Cannot create symlink to `.2.5.15.hv7vs1++os+web.browser+web.cordova': No such file or directory
+tar: Exiting with failure status due to previous errors
 
 
 
