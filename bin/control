@@ -5,8 +5,8 @@ FMT="%a %b %d %Y %H:%M:%S GMT%z (%Z)"
 
 function is_go_service_running() {
     exec_name=$(basename $(get_godir))
-    if [ -f $OPENSHIFT_REPO_DIR/pid/meteor.pid ]; then
-          go_pid=$( cat $OPENSHIFT_REPO_DIR/pid/meteor.pid 2> /dev/null )
+    if [ -f $OPENSHIFT_REPO_DIR/meteor.pid ]; then
+          go_pid=$( cat $OPENSHIFT_REPO_DIR/meteor.pid 2> /dev/null )
         if [ `ps --no-heading --pid $go_pid | wc -l` -gt 0 ] ; then
             return 0
         fi
@@ -32,12 +32,11 @@ function start() {
     fi
     
     echo "`date +"$FMT"`: Starting application '$OPENSHIFT_APP_NAME' from bin/$package..."
-    cd $OPENSHIFT_REPO_DIR\hello
-    meteor >> $logf 2>&1 &
+    echo >> $logf 2>&1 &
     ret=$?
     npid=$!
             if [ $ret -eq 0 ]; then
-                echo "$npid" > "$OPENSHIFT_REPO_DIR/pid/meteor.pid"
+                echo "$npid" > "$OPENSHIFT_REPO_DIR/meteor.pid"
             else
                 echo "Application '$OPENSHIFT_APP_NAME' failed to start - $ret" 1>&2
                 exit $ret
@@ -46,8 +45,8 @@ function start() {
 
 
 function stop() {
-    if [ -f $OPENSHIFT_REPO_DIR/pid/meteor.pid ]; then
-        go_pid=$( cat $OPENSHIFT_REPO_DIR/pid/meteor.pid 2> /dev/null )
+    if [ -f $OPENSHIFT_REPO_DIR/meteor.pid ]; then
+        go_pid=$( cat $OPENSHIFT_REPO_DIR/meteor.pid 2> /dev/null )
     fi
 
     if [ -n "$go_pid" ]; then
