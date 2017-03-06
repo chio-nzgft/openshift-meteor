@@ -7,8 +7,8 @@ source "${OPENSHIFT_GO_DIR}/lib/util"
 
 function is_go_service_running() {
     exec_name=$(basename $(get_godir))
-    if [ -f $OPENSHIFT_GO_DIR/pid/go.pid ]; then
-        go_pid=$( cat $OPENSHIFT_GO_DIR/pid/go.pid 2> /dev/null )
+    if [ -f $OPENSHIFT_REPO_DIR/pid/meteor.pid ]; then
+          go_pid=$( cat $OPENSHIFT_REPO_DIR/pid/meteor.pid 2> /dev/null )
         if [ `ps --no-heading --pid $go_pid | wc -l` -gt 0 ] ; then
             return 0
         fi
@@ -26,7 +26,7 @@ function status() {
 }
 
 function start() {
-    logf="${OPENSHIFT_GO_LOG_DIR}/go.log"
+    logf="${$OPENSHIFT_REPO_DIR}/meteor.log"
 
     if is_go_service_running; then
         echo "`date +"$FMT"`: Application '$OPENSHIFT_APP_NAME' is already running; skipping start()"
@@ -38,14 +38,12 @@ function start() {
 	package="revel"
        if [ -f "bin/$package" ]; then
             echo "`date +"$FMT"`: Starting application '$OPENSHIFT_APP_NAME' from bin/$package..."
-
-            export GOPATH=$OPENSHIFT_REPO_DIR
-	    bin/revel run github.com/leanote/leanote >> $logf 2>&1 &
-	    
-            ret=$?
+            cd $$OPENSHIFT_REPO_DIR
+            meteor run  >> $logf 2>&1 &
+	    ret=$?
             npid=$!
             if [ $ret -eq 0 ]; then
-                echo "$npid" > "$OPENSHIFT_GO_DIR/pid/go.pid"
+                echo "$npid" > "$OPENSHIFT_REPO_DIR/pid/meteor.pid"
             else
                 echo "Application '$OPENSHIFT_APP_NAME' failed to start - $ret" 1>&2
                 exit $ret
@@ -58,12 +56,12 @@ function start() {
 
 
 function stop() {
-    if [ -f $OPENSHIFT_GO_DIR/pid/go.pid ]; then
-        go_pid=$( cat $OPENSHIFT_GO_DIR/pid/go.pid 2> /dev/null )
+    if [ -f $OPENSHIFT_REPO_DIR/pid/meteor.pid ]; then
+        go_pid=$( cat $OPENSHIFT_REPO_DIR/pid/meteor.pid 2> /dev/null )
     fi
 
     if [ -n "$go_pid" ]; then
-        logf="${OPENSHIFT_GO_LOG_DIR}/go.log"
+        logf="${$OPENSHIFT_REPO_DIR}/meteor.log"
         echo "`date +"$FMT"`: Stopping application '$OPENSHIFT_APP_NAME' ..." >> $logf
         /bin/kill $go_pid
         ret=$?
@@ -77,7 +75,7 @@ function stop() {
         fi
 
         echo "`date +"$FMT"`: Stopped Go application '$OPENSHIFT_APP_NAME'" >> $logf
-        rm -f $OPENSHIFT_GO_DIR/pid/go.pid
+        rm -f $OPENSHIFT_REPO_DIR/pid/meteor.pid
     else
         echo "Warning: Application '$OPENSHIFT_APP_NAME' server exists without a pid file.  Use force-stop to kill." 1>&2
     fi
@@ -89,7 +87,7 @@ function restart() {
 }
 
 function build() {
-    ${OPENSHIFT_GO_DIR}/bin/compile ${OPENSHIFT_REPO_DIR} ${OPENSHIFT_GO_DIR}/cache
+    ${OPENSHIFT_REPO_DIR}/bin/compile ${OPENSHIFT_REPO_DIR} ${OPENSHIFT_REPO_DIR}/cache
 }
 
 function post-deploy() {
@@ -101,10 +99,10 @@ function pre-build() {
 }
 
 function tidy() {
-  client_message "Emptying log dir: $OPENSHIFT_GO_LOG_DIR"
+  client_message "Emptying log dir: $OPENSHIFT_REPO_DIR"
   shopt -s dotglob
   rm -rf $OPENSHIFT_GO_LOG_DIR/*
-  rm -rf $OPENSHIFT_GO_DIR/tmp/*
+  rm -rf $OPENSHIFT_REPO_DIR/tmp/*
 }
 
 #
