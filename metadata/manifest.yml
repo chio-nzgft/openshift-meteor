@@ -1,22 +1,17 @@
 Name: go
-Cartridge-Short-Name: GO
-Display-Name: Go 1.5.2
-Version: "1.5.2"
-Versions: ["1.5.2","1.4.2","1.4.1", "1.4", "1.3.1","1.2.2","1.1.2", "1.0.3"]
+Cartridge-Short-Name: Meteor
+Display-Name: Meteor 1.4
+Version: "1.4"
+Versions: ["1.4"]
 Website: https://github.com/smarterclayton/openshift-go-cart
 Cartridge-Version: 0.0.1
 Cartridge-Vendor: smarterclayton
 Categories:
   - service
-  - golang
+  - meteor
   - web_framework
 Provides:
-  - go-1.5.2
-  - "go"
-  - "go (version) = 1.2.2"
-  - "go (version) = 1.1.2"
-  - "go (version) = 1.1"
-  - "go (version) = 1"
+  - meteor-1.4
 Scaling:
   Min: 1
   Max: -1
@@ -58,15 +53,11 @@ Endpoints:
         Options:       { health: true }
 Install-Build-Required: true
 Version-Overrides:
-  '1.0.3':
-     Display-Name: Go 1.0.3
+  '1.4':
+     Display-Name:  1.4
      Provides:
-      - go-1.0
-      - "go"
-      - "go (version) = 1.0.3"
-      - "go (version) = 1.0"
-      - "go (version) = 1"
+      - meteor-1.4
      Group-Overrides:
        - components:
-         - go-1.0
+         - meteor-1.4
          - web_proxy
