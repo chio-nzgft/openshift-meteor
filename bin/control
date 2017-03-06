@@ -24,7 +24,7 @@ function status() {
 }
 
 function start() {
-    logf="${$OPENSHIFT_REPO_DIR}/meteor.log"
+    logf="${OPENSHIFT_REPO_DIR}/meteor.log"
 
     if is_go_service_running; then
         echo "`date +"$FMT"`: Application '$OPENSHIFT_APP_NAME' is already running; skipping start()"
